@@ -45,7 +45,7 @@ public class Controller {
 
     //Retrieving a record based on its known UUID
     @GetMapping(value="/retrieve/{id}")
-    public ResponseDTO sampleRetrieveGet(
+    public Person sampleRetrieveGet(
             @PathVariable UUID id
     ) {
        try{

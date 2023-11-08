@@ -26,27 +26,19 @@ public class DemoService {
     }
     public Person saveDetail(SaveRequestDTO requestDTO){
         Person person = new Person();
-        person.setId(UUID.fromString(requestDTO.getId()));
+        person.setId(UUID.randomUUID());
         person.setName(requestDTO.getName());
         person.setAge(requestDTO.getAge());
         person.setPosition(requestDTO.getPosition());
         return personRepository.save(person);
     }
 
-    public ResponseDTO retrieveDetailsGet(UUID id) throws IOException {
-
-//  Example of Jpa Repository retrieving based on the provided UUID:
-//        Optional<Person> person = personRepository.findById(id);
-//        ResponseDTO result = new ResponseDTO();
-//        if(person.isPresent()){
-//            Person data = person.get();
-//            result.convertToDTO(data);
-//        }
-
-//  For the current demo, the sample response data provided is used instead:
-        String response = getResponse("src/main/resources/SampleResponseData.json");
-        ResponseDTO result = objectMapper.readValue(response, ResponseDTO.class);
-        return result;
+    public Person retrieveDetailsGet(UUID id) throws IOException {
+        Optional<Person> person = personRepository.findById(id);
+        if(person.isPresent()){
+            return person.get();
+        }
+        return new Person();
     }
 
     public ResponseDTO retrieveDetailsPost(RetrieveRequestDTO retrieveRequestDTO) throws IOException {

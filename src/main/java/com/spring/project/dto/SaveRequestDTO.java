@@ -12,9 +12,7 @@ import java.util.UUID;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@JsonInclude(JsonInclude.Include.NON_NULL)
 public class SaveRequestDTO {
-    private String id;
     private String name;
     private String age;
     private String position;
