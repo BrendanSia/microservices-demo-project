@@ -1,8 +1,10 @@
 package com.spring.project.web;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.spring.project.dto.RequestDTO;
+import com.spring.project.dto.RetrieveRequestDTO;
 import com.spring.project.dto.ResponseDTO;
+import com.spring.project.dto.SaveRequestDTO;
+import com.spring.project.entity.Person;
 import com.spring.project.service.DemoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -29,8 +31,19 @@ public class Controller {
         }
     }
 
-    //For when users expect specific record/information to be returned
-    //e.g. When the UUID of a particular record of a database is known
+    //Creating a new record in the database
+    @PostMapping(value="/save")
+    public Person sampleSave(
+            @RequestBody SaveRequestDTO requestDTO
+    ){
+        try{
+            return demoService.saveDetail(requestDTO);
+        }catch(Exception e){
+            throw new RuntimeException();
+        }
+    }
+
+    //Retrieving a record based on its known UUID
     @GetMapping(value="/retrieve/{id}")
     public ResponseDTO sampleRetrieveGet(
             @PathVariable UUID id
@@ -42,22 +55,15 @@ public class Controller {
        }
     }
 
-    //For when users are expected to provide params for the request body
-    //e.g. Names, age, position and etc.
+    //Retrieving a record based on name
     @PostMapping(value="/retrieve")
     public ResponseDTO sampleRetrievePost(
-            @RequestBody RequestDTO requestDTO
-    ) throws IOException {
-
-        //For this demo, the sample request data provided will be used
-        String request = getRequest("src/main/resources/SampleRequestData.json");
-        requestDTO = objectMapper.readValue(request, RequestDTO.class);
-
-        return demoService.retrieveDetailsPost(requestDTO);
-    }
-
-    public String getRequest(String path) throws IOException {
-        String file = new String(Files.readAllBytes(Path.of("src/main/resources/SampleRequestData.json")));
-        return file;
+            @RequestBody RetrieveRequestDTO retrieveRequestDTO
+    ){
+        try{
+            return demoService.retrieveDetailsPost(retrieveRequestDTO);
+        }catch(IOException e){
+            throw new RuntimeException();
+        }
     }
 }
