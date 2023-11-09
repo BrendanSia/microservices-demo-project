@@ -20,14 +20,13 @@ import java.util.UUID;
 public class Controller {
 
     private final DemoService demoService;
-    private final ObjectMapper objectMapper;
 
     @GetMapping(value="/print")
     public String samplePrint(){
         try{
             return demoService.sayHello();
         }catch(Exception e){
-            return "Something went wrong:" + e;
+            return "Something went wrong:" + e.getMessage();
         }
     }
 
@@ -65,5 +64,27 @@ public class Controller {
         }catch(IOException e){
             throw new RuntimeException();
         }
+    }
+
+    //Updating a record based on its known UUID
+    @PostMapping(value="/update/{id}")
+    public String sampleUpdate(
+            @PathVariable UUID id,
+            @RequestBody SaveRequestDTO requestDTO
+    ) {
+        try{
+            return demoService.updateDetails(id, requestDTO);
+        } catch (Exception e){
+            return "Something went wrong:" + e.getMessage();
+        }
+
+    }
+
+    //Deleting a record based on its known UUID
+    @PostMapping(value="/delete/{id}")
+    public String sampleDelete(
+            @PathVariable UUID id
+    ) {
+        return demoService.deleteDetails(id);
     }
 }

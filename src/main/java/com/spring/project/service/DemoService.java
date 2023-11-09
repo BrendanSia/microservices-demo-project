@@ -50,6 +50,35 @@ public class DemoService {
         return responseDTO;
     }
 
+    public String updateDetails(UUID id, SaveRequestDTO request){
+        if(personRepository.existsById(id)){
+
+            //Retrieve the existing record from database
+            Optional<Person> person = personRepository.findById(id);
+            Person updatePerson = person.get();
+
+            //Replace old data with new data
+            updatePerson.setName(request.getName());
+            updatePerson.setAge(request.getAge());
+            updatePerson.setPosition(request.getPosition());
+
+            //Save into database
+            personRepository.saveAndFlush(updatePerson);
+            return "Record updated succesfully";
+        } else {
+            return "This record does not exist";
+        }
+    }
+
+    public String deleteDetails(UUID id){
+        try{
+            personRepository.deleteById(id);
+            return "Record deleted successfully";
+        } catch(Exception e){
+           return "Error deletion: " + e.getMessage();
+        }
+    }
+
     public String getResponse(String path) throws IOException {
         String file = new String(Files.readAllBytes(Path.of(path)));
         return file;
