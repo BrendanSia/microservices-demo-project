@@ -1,0 +1,161 @@
+{
+	"info": {
+		"_postman_id": "81891922-f03c-4d06-867c-3ba441a0d44f",
+		"name": "Demo Project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31032226",
+		"_collection_link": "https://www.postman.com/brendansia/workspace/demo-project/collection/31032226-81891922-f03c-4d06-867c-3ba441a0d44f?action=share&source=collection_link&creator=31032226"
+	},
+	"item": [
+		{
+			"name": "print",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/sample/print",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sample",
+						"print"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "save",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Jill\",\r\n    \"age\":\"26\",\r\n    \"position\":\"Junior Supervisor\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/sample/save",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sample",
+						"save"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "retrieve/{id}",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/sample/retrieve/931085ad-8cc0-4fe3-820e-7632498c4178",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sample",
+						"retrieve",
+						"931085ad-8cc0-4fe3-820e-7632498c4178"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "retrieve",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"John\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/sample/retrieve",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sample",
+						"retrieve"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update/{id}",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Vic\",\r\n    \"age\":\"45\",\r\n    \"position\":\"CEO\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/sample/update/d0d3969b-6a20-443d-9f65-76b18c3c9204",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sample",
+						"update",
+						"d0d3969b-6a20-443d-9f65-76b18c3c9204"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete/{id}",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/sample/delete/d154e2ca-9afa-467b-89ed-8e2cf97754ed",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"sample",
+						"delete",
+						"d154e2ca-9afa-467b-89ed-8e2cf97754ed"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
