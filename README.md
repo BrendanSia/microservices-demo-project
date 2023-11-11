@@ -25,7 +25,7 @@ Welcome to a my Spring Boot project that aims to perform CRUD operations.
 
 ## Important
 The database used in this project is an in-memory database. Everytime the project is restarted, steps 4 to 8 will have to be repeated in the "Preparation" section above, as the contents of the database will be erased. 
-To test the /retrieve/{id} request, please ensure the /save request is always triggered first, at least once everytime the project is started. The UUID can be obtained by viewing the records in the database after it is saved, to replace "{id}".
+To test the requests ending with /{id}, please ensure the /save request is always triggered first, at least once everytime the project is started. The UUID can be obtained by viewing the records in the database after it is saved, to replace "{id}".
 
 ## About
 This project is a simple demonstration of the application of Spring Framework to perform CRUD operations. This project is for practising and demonstration purposes.
